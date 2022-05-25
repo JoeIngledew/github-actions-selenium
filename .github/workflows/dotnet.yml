@@ -30,6 +30,6 @@ jobs:
     - name: Build app container
       run: docker build -t app .
     - name: Start app container
-      run: docker run -d -p 8080:8080 
+      run: docker run -d -p 8080:8080 app
     - name: Test
       run: dotnet test --no-build --verbosity normal
