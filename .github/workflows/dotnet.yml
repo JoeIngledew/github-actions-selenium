@@ -10,12 +10,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-  
-    services:
-      selenium:
-        image: selenium/standalone-chrome
-        ports: 
-          - 4444:4444
 
     steps:
     - uses: actions/checkout@v3
