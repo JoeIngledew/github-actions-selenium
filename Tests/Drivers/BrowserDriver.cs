@@ -32,7 +32,7 @@ public class BrowserDriver : IDisposable
         if (hasRemoteConfig && useRemote)
         {
             return new RemoteWebDriver(
-                new Uri("http://selenium:4444"),
+                new Uri("http://localhost:4444"),
                 options
             );
         }
