@@ -25,4 +25,5 @@ jobs:
       run: docker-compose up -d
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: docker-compose down -rmi all
+    - name: Destroy containers
+      run: docker-compose down -rmi all
