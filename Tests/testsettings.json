@@ -1,4 +1,4 @@
 {
-    "BaseUrl": "https://localhost:8080/",
+    "BaseUrl": "http://wepapp:8080/",
     "UseRemoteBrowser": true
 }

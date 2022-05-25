@@ -21,11 +21,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Build app container
-      run: docker build -t app .
-    - name: Start selenium container
-      run: docker run -d -p 4444:4444 selenium/standalone-chrome
-    - name: Start app container
-      run: docker run -d -p 8080:8080 app
+    - name: Run docker compose
+      run: docker-compose up
     - name: Test
       run: dotnet test --no-build --verbosity normal
