@@ -5,7 +5,7 @@ services:
     build: .
     ports:
       - "8080:8080"
-  chrome:
+  selenium:
     image: "selenium/standalone-chrome"
     ports:
       - "4444:4444"
