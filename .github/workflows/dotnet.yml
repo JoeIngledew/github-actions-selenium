@@ -10,6 +10,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+  
+    services:
+      selenium:
+        image: selenium/standalone-chrome
+        ports: 4444:4444
 
     steps:
     - uses: actions/checkout@v3
@@ -21,9 +26,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Run docker compose
-      run: docker-compose up -d
+    - name: Build app container
+      run: docker build -t app .
+    - name: Start app container
+      run: docker run -d -p 8080:8080 
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Destroy containers
-      run: docker-compose down -rmi all
