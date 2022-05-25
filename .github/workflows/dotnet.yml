@@ -22,6 +22,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Run docker compose
-      run: docker-compose up
+      run: docker-compose up -d
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: docker-compose down -rmi all
