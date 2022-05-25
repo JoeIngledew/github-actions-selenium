@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Remote;
 
 public class BrowserDriver : IDisposable
 {
@@ -26,6 +27,16 @@ public class BrowserDriver : IDisposable
         var options = new ChromeOptions { AcceptInsecureCertificates = true };
         options.AddArgument("--incognito");
         options.AddArgument("--start-maximized");
+
+        bool hasRemoteConfig = bool.TryParse(_config["UseRemoteBrowser"], out bool useRemote);
+        if (hasRemoteConfig && useRemote)
+        {
+            return new RemoteWebDriver(
+                new Uri("http://localhost:4444"),
+                options
+            );
+        }
+
         return new ChromeDriver(
             ChromeDriverService.CreateDefaultService(),
             options
