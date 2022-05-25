@@ -27,6 +27,11 @@ public class BrowserDriver : IDisposable
         var options = new ChromeOptions { AcceptInsecureCertificates = true };
         options.AddArgument("--incognito");
         options.AddArgument("--start-maximized");
+        options.AddArgument("--headless");
+        options.AddArgument("--no-sandbox");
+        options.AddArgument("--disable-gpu");
+        options.AddArgument("--disable-dev-shm-usage");
+        options.AddArgument("--disable-extensions");
 
         bool hasRemoteConfig = bool.TryParse(_config["UseRemoteBrowser"], out bool useRemote);
         if (hasRemoteConfig && useRemote)
